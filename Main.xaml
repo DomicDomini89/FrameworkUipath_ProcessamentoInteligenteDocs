@@ -118,30 +118,26 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="580,2421" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1128,2432" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="C:\Users\User\Desktop\PC\RPA Cours\M Cruz Uipath RPA Revisao Udemy\ProcessamentoDocumentosFramework\Documentos PDFs e Formulários" Name="strCaminhoPastaDocs" />
       <Variable x:TypeArguments="x:String" Name="strTextoDoc" />
       <Variable x:TypeArguments="p3:Document" Name="modeloDocumento" />
       <Variable x:TypeArguments="x:String" Default="https://du.uipath.com/ocr" Name="strUipathOCRendPoint" />
-      <Variable x:TypeArguments="x:String" Name="strApiKey">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">N+U5jgcv1vDAU2vPde+YYRLbssBozHFGb+j0jxi03wAixhr+Pq8a8456U7Net5AXduWpHpFfvHG/DHu3pZG4ww==</Literal>
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="N+U5jgcv1vDAU2vPde+YYRLbssBozHFGb+j0jxi03wAixhr+Pq8a8456U7Net5AXduWpHpFfvHG/DHu3pZG4ww==" Name="strApiKey" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Projeto " sap:VirtualizedContainerService.HintSize="580,2398" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence DisplayName="Projeto " sap:VirtualizedContainerService.HintSize="580,2409" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ForEachFileX DisplayName="For Each File In Folder" Folder="[strCaminhoPastaDocs]" sap:VirtualizedContainerService.HintSize="546,2315" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+      <ui:ForEachFileX DisplayName="For Each File In Folder" Folder="[strCaminhoPastaDocs]" sap:VirtualizedContainerService.HintSize="546,2326" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
         <ui:ForEachFileX.Body>
           <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
             <ActivityAction.Argument1>
@@ -150,7 +146,7 @@
             <ActivityAction.Argument2>
               <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
             </ActivityAction.Argument2>
-            <Sequence DisplayName="Fazer" sap:VirtualizedContainerService.HintSize="512,2034" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence DisplayName="Fazer" sap:VirtualizedContainerService.HintSize="512,2045" sap2010:WorkflowViewState.IdRef="Sequence_2">
               <Sequence.Variables>
                 <Variable x:TypeArguments="p6:DocumentTaxonomy" Name="taxonomia" />
                 <Variable x:TypeArguments="p7:ClassificationResult[]" Name="varResultadosClassificacao" />
@@ -264,7 +260,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </p2:ClassifyDocumentScope>
-              <ui:IfElseIfV2 sap2010:Annotation.AnnotationText="Se houver classificação nesse documento ... [Dentro dos parametros]&#xD;&#xA;" Condition="[varResultadosClassificacao.Any]" DisplayName="Else If Classificação  ELSE star e Validação" sap:VirtualizedContainerService.HintSize="478,798" sap2010:WorkflowViewState.IdRef="IfElseIfV2_1">
+              <ui:IfElseIfV2 sap2010:Annotation.AnnotationText="Se houver classificação nesse documento ... [Dentro dos parametros]&#xA;" Condition="[varResultadosClassificacao.Any]" DisplayName="Else If Classificação  ELSE star e Validação" sap:VirtualizedContainerService.HintSize="478,798" sap2010:WorkflowViewState.IdRef="IfElseIfV2_1">
                 <ui:IfElseIfV2.Else>
                   <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,449" sap2010:WorkflowViewState.IdRef="Sequence_6">
                     <sap:WorkflowViewStateService.ViewState>
@@ -295,7 +291,7 @@
                   </Sequence>
                 </ui:IfElseIfV2.Then>
               </ui:IfElseIfV2>
-              <p5:DataExtractionScope DocumentTypeId="{x:Null}" RuntimeAssetPath="{x:Null}" RuntimeTenantUrl="{x:Null}" sap2010:Annotation.AnnotationText="prox 63..." ApplyGenerativeValidation="False" ClassificationResult="[varResultadosClassificacao.First]" DisplayName="Data Extraction Scope" DocumentObjectModel="[modeloDocumento]" DocumentPath="[CurrentFile.FullName]" DocumentText="[strTextoDoc]" ExtractionResult="[varResultadoExtract]" FormatValuesIfPossible="True" GenerativeValidationConfidenceThreshold="99" sap:VirtualizedContainerService.HintSize="478,424" sap2010:WorkflowViewState.IdRef="DataExtractionScope_1" Taxonomy="[taxonomia]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{},&quot;ExtractorMinimumConfidence&quot;:{},&quot;ExtractorsAliases&quot;:{},&quot;DocumentTypeOptionsByExtractor&quot;:{}}">
+              <p5:DataExtractionScope DocumentTypeId="{x:Null}" RuntimeAssetPath="{x:Null}" RuntimeTenantUrl="{x:Null}" sap2010:Annotation.AnnotationText="prox 63...&#xD;&#xA;Extractor" ApplyGenerativeValidation="False" ClassificationResult="[varResultadosClassificacao.First]" DisplayName="Data Extraction Scope" DocumentObjectModel="[modeloDocumento]" DocumentPath="[CurrentFile.FullName]" DocumentText="[strTextoDoc]" ExtractionResult="[varResultadoExtract]" FormatValuesIfPossible="True" GenerativeValidationConfidenceThreshold="99" sap:VirtualizedContainerService.HintSize="478,435" sap2010:WorkflowViewState.IdRef="DataExtractionScope_1" Taxonomy="[taxonomia]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{},&quot;ExtractorMinimumConfidence&quot;:{},&quot;ExtractorsAliases&quot;:{},&quot;DocumentTypeOptionsByExtractor&quot;:{}}">
                 <p5:DataExtractionScope.AvailableAssetPaths>
                   <x:Array Type="x:String">
                     <x:String>Shared/ACME</x:String>
