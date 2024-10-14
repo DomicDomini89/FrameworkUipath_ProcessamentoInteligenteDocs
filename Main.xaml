@@ -261,7 +261,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </p2:ClassifyDocumentScope>
-              <ui:IfElseIfV2 sap2010:Annotation.AnnotationText="Se houver classificação nesse documento ... [Dentro dos parametros]&#xD;&#xA;" Condition="[varResultadosClassificacao.Any]" DisplayName="Else If" sap:VirtualizedContainerService.HintSize="478,789" sap2010:WorkflowViewState.IdRef="IfElseIfV2_1">
+              <ui:IfElseIfV2 sap2010:Annotation.AnnotationText="Se houver classificação nesse documento ... [Dentro dos parametros]&#xD;&#xA;" Condition="[varResultadosClassificacao.Any]" DisplayName="Else If Classificação  ELSE star e Validação" sap:VirtualizedContainerService.HintSize="478,789" sap2010:WorkflowViewState.IdRef="IfElseIfV2_1">
                 <ui:IfElseIfV2.Else>
                   <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,449" sap2010:WorkflowViewState.IdRef="Sequence_6">
                     <sap:WorkflowViewStateService.ViewState>
