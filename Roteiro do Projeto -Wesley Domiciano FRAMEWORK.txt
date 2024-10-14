@@ -1,0 +1,37 @@
+---------------------Robo Processamento Inteligente de Documentos----------------------------------------------
+
+
+Faremos tratamento de dados de faturas/formularios de diferentes estruturas.
+
+Da fatura:
+Nome da empresa
+Numero da fatura
+
+Info da tabela como:
+descriccao item e montante
+
+nos formularios:
+Nome, nome da empresa, validar se esta assinado ou nao(Validação das mesmas)
+Formularios escritos a mão ,framework Uipath document understand=permite fazer 
+processamento inteligente de documentos, em diferentes cenarios com estrutura fixa,
+ou nao estruturados,tratamento de pdf, digitalizados, img ou escritos a mão com 
+ajuda de machine learning (Aprendizagem de maquina) e IA.
+
+Passos: 
+
+[Pacotes]
+1) Uipath.intelligentOCR.Activities=[Produzira atividades para digitalização,classificação,extração,validação e treinamento dos extratores e classificadores]
+2) Uipath.DocumentUnderstanding.ML.Activities = [Fornece atividades de Machine Learning/Aprendizagem de maquina classificação e extração de documentos].
+
+
+
+
+
+1)Definir a Taxonomia=O que queremos extrair(fatura, nome empresa)
+2)Faturas e formularios
+3)Digitalizar; Extrair testo do doc
+4)Classificar doc = se é fatura ou formulario para diferentes tomadas de decisao 
+5)Extracao dos dados do doc
+6)Validação da extração dos dados 
+7)Exportação dos dados 
+8)Treinamento da extação e classificação
