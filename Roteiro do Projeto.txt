@@ -35,3 +35,5 @@ Passos:
 6)Validação da extração dos dados 
 7)Exportação dos dados 
 8)Treinamento da extação e classificação
+
+Trabalhamos a exportaçao dos dados da extração para um excel 

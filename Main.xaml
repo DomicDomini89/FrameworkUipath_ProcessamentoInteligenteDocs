@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/intelligentocr" xmlns:p1="http://schemas.uipath.com/workflow/activities/ocr" xmlns:p2="http://schemas.uipath.com/workflow/activities/intelligentocr/classification" xmlns:p3="http://schemas.uipath.com/workflow/activities/document-processing-contracts/dom" xmlns:p4="http://schemas.uipath.com/workflow/activities/document-processing-contracts/classification" xmlns:p5="http://schemas.uipath.com/workflow/activities/intelligentocr/extraction" xmlns:p6="http://schemas.uipath.com/workflow/activities/documentunderstanding-ml" xmlns:p7="http://schemas.uipath.com/workflow/activities/document-processing-contracts/extraction" xmlns:p8="http://schemas.uipath.com/workflow/activities/document-processing-contracts/results" xmlns:p9="http://schemas.uipath.com/workflow/activities/document-processing-contracts/taxonomy" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/intelligentocr" xmlns:p1="http://schemas.uipath.com/workflow/activities/ocr" xmlns:p2="http://schemas.uipath.com/workflow/activities/intelligentocr/classification" xmlns:p3="http://schemas.uipath.com/workflow/activities/document-processing-contracts/dom" xmlns:p4="http://schemas.uipath.com/workflow/activities/document-processing-contracts/classification" xmlns:p5="http://schemas.uipath.com/workflow/activities/intelligentocr/extraction" xmlns:p6="http://schemas.uipath.com/workflow/activities/documentunderstanding-ml" xmlns:p7="http://schemas.uipath.com/workflow/activities/document-processing-contracts/extraction" xmlns:p8="http://schemas.uipath.com/workflow/activities/document-processing-contracts/results" xmlns:p9="http://schemas.uipath.com/workflow/activities/document-processing-contracts/taxonomy" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:sd2="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -49,6 +49,10 @@
       <x:String>UiPath.DocumentUnderstanding.ML.Activities</x:String>
       <x:String>UiPath.IntelligentOCR.Activities.ValidationStation</x:String>
       <x:String>UiPath.SmartData.PositionBasedExtraction.Storage</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -122,9 +126,12 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
       <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.SmartData.PositionBasedExtraction</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="736,1965" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="736,3576" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strCaminhoPastaDocs">
         <Variable.Default>
@@ -147,19 +154,26 @@
           <Literal x:TypeArguments="x:String">https://du.uipath.com/svc/formextractor</Literal>
         </Variable.Default>
       </Variable>
+      <Variable x:TypeArguments="p9:DocumentTaxonomy" Name="taxonomia" />
+      <Variable x:TypeArguments="sd2:DataSet" Name="var_DataSetExtracao" />
+      <Variable x:TypeArguments="x:String" Name="str_CaminhoExtracaoPasta">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">C:\Users\User\Desktop\PC\RPA Cours\M Cruz Uipath RPA Revisao Udemy\ProcessamentoDocumentosFramework-Taxonomia\Extracao</Literal>
+        </Variable.Default>
+      </Variable>
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Projeto " sap:VirtualizedContainerService.HintSize="736,1942" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence DisplayName="Projeto " sap:VirtualizedContainerService.HintSize="736,3553" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ForEachFileX DisplayName="For Each File In Folder" Folder="[strCaminhoPastaDocs]" sap:VirtualizedContainerService.HintSize="702,1859" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+      <ui:ForEachFileX DisplayName="For Each File In Folder" Folder="[strCaminhoPastaDocs]" sap:VirtualizedContainerService.HintSize="702,3470" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
         <ui:ForEachFileX.Body>
           <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
             <ActivityAction.Argument1>
@@ -168,10 +182,7 @@
             <ActivityAction.Argument2>
               <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
             </ActivityAction.Argument2>
-            <Sequence DisplayName="Fazer" sap:VirtualizedContainerService.HintSize="668,1578" sap2010:WorkflowViewState.IdRef="Sequence_2">
-              <Sequence.Variables>
-                <Variable x:TypeArguments="p9:DocumentTaxonomy" Name="taxonomia" />
-              </Sequence.Variables>
+            <Sequence DisplayName="Fazer" sap:VirtualizedContainerService.HintSize="668,3189" sap2010:WorkflowViewState.IdRef="Sequence_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -430,10 +441,10 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </p5:DataExtractionScope>
-              <ParallelForEach x:TypeArguments="p8:ResultsDataPoint" DisplayName="Parallel For Each" sap:VirtualizedContainerService.HintSize="634,48" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_3" Values="[varResultadoExtract.ResultsDocument.Fields]">
+              <ParallelForEach x:TypeArguments="p8:ResultsDataPoint" DisplayName="Parallel For Each -Por cada CAMPO" sap:VirtualizedContainerService.HintSize="634,961" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_3" Values="[varResultadoExtract.ResultsDocument.Fields]">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -441,7 +452,7 @@
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="p8:ResultsDataPoint" Name="campo" />
                   </ActivityAction.Argument>
-                  <ui:IfElseIfV2 Condition="[campo.IsMissing]" DisplayName="Else If- FIELD IS MISSING" sap:VirtualizedContainerService.HintSize="450,440" sap2010:WorkflowViewState.IdRef="IfElseIfV2_2">
+                  <ui:IfElseIfV2 Condition="[campo.IsMissing]" DisplayName="Else If- FIELD IS MISSING" sap:VirtualizedContainerService.HintSize="450,781" sap2010:WorkflowViewState.IdRef="IfElseIfV2_2">
                     <ui:IfElseIfV2.Else>
                       <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89" sap2010:WorkflowViewState.IdRef="Sequence_10">
                         <sap:WorkflowViewStateService.ViewState>
@@ -455,16 +466,16 @@
                       <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True" />
                     </ui:IfElseIfV2.ElseIfs>
                     <ui:IfElseIfV2.Then>
-                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,165" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,506" sap2010:WorkflowViewState.IdRef="Sequence_9">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <p:PresentValidationStation FieldsValidationConfidence="{x:Null}" AutomaticExtractionResults="[varResultadoExtract]" DisplayName="Present Validation Station" DocumentObjectModel="[modeloDocumento]" DocumentPath="[CurrentFile.FullName]" DocumentText="[strTextoDoc]" sap:VirtualizedContainerService.HintSize="382,57" sap2010:WorkflowViewState.IdRef="PresentValidationStation_1" ShowOnlyRelevantPageRange="False" Taxonomy="[taxonomia]" ValidatedExtractionResults="[varResultadoExtract]">
+                        <p:PresentValidationStation FieldsValidationConfidence="{x:Null}" AutomaticExtractionResults="[varResultadoExtract]" DisplayName="Present Validation Station" DocumentObjectModel="[modeloDocumento]" DocumentPath="[CurrentFile.FullName]" DocumentText="[strTextoDoc]" sap:VirtualizedContainerService.HintSize="382,398" sap2010:WorkflowViewState.IdRef="PresentValidationStation_1" ShowOnlyRelevantPageRange="False" Taxonomy="[taxonomia]" ValidatedExtractionResults="[varResultadoExtract]">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
@@ -473,6 +484,23 @@
                       </Sequence>
                     </ui:IfElseIfV2.Then>
                   </ui:IfElseIfV2>
+                </ActivityAction>
+              </ParallelForEach>
+              <p5:ExportExtractionResults DataSet="[var_DataSetExtracao]" DisplayName="Export Extraction Results" ExtractionResult="[varResultadoExtract]" sap:VirtualizedContainerService.HintSize="634,206" sap2010:WorkflowViewState.IdRef="ExportExtractionResults_1" IncludeConfidence="False" IncludeOCRConfidence="False" />
+              <Delay Duration="00:00:04" sap:VirtualizedContainerService.HintSize="634,122" sap2010:WorkflowViewState.IdRef="Delay_1" />
+              <ParallelForEach x:TypeArguments="sd2:DataTable" DisplayName="Parallel For Each" sap:VirtualizedContainerService.HintSize="634,370" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_8" Values="[var_DataSetExtracao.Tables.Cast(Of DataTable)()]">
+                <ActivityAction x:TypeArguments="sd2:DataTable">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd2:DataTable" Name="tabela" />
+                  </ActivityAction.Argument>
+                  <Sequence sap:VirtualizedContainerService.HintSize="416,199" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[tabela]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="382,139" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[tabela.TableName]" WorkbookPath="[str_CaminhoExtracaoPasta + &quot;\&quot;+ CurrentFile.Name +&quot;.xlsx&quot;]" />
+                  </Sequence>
                 </ActivityAction>
               </ParallelForEach>
             </Sequence>
