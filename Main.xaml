@@ -131,36 +131,20 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="736,3576" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1276,3576" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="strCaminhoPastaDocs">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">C:\Users\User\Desktop\PC\RPA Cours\M Cruz Uipath RPA Revisao Udemy\ProcessamentoDocumentosFramework-Taxonomia\Documentos PDFs e Formulários</Literal>
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="C:\Users\User\Desktop\PC\RPA Cours\M Cruz Uipath RPA Revisao Udemy\ProcessamentoDocumentosFramework-Taxonomia\Documentos PDFs e Formulários" Name="strCaminhoPastaDocs" />
       <Variable x:TypeArguments="x:String" Name="strTextoDoc" />
       <Variable x:TypeArguments="p3:Document" Name="modeloDocumento" />
       <Variable x:TypeArguments="x:String" Default="https://du.uipath.com/ocr" Name="strUipathOCRendPoint" />
       <Variable x:TypeArguments="x:String" Default="N+U5jgcv1vDAU2vPde+YYRLbssBozHFGb+j0jxi03wAixhr+Pq8a8456U7Net5AXduWpHpFfvHG/DHu3pZG4ww==" Name="strApiKey" />
       <Variable x:TypeArguments="p8:ClassificationResult[]" Name="varResultadosClassificacao" />
       <Variable x:TypeArguments="p8:ExtractionResult" Name="varResultadoExtract" />
-      <Variable x:TypeArguments="x:String" Name="strInvoicesEndPoint">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">https://du.uipath.com/ie/invoices</Literal>
-        </Variable.Default>
-      </Variable>
-      <Variable x:TypeArguments="x:String" Name="strFromExtractorEndPoint">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">https://du.uipath.com/svc/formextractor</Literal>
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="https://du.uipath.com/ie/invoices" Name="strInvoicesEndPoint" />
+      <Variable x:TypeArguments="x:String" Default="https://du.uipath.com/svc/formextractor" Name="strFromExtractorEndPoint" />
       <Variable x:TypeArguments="p9:DocumentTaxonomy" Name="taxonomia" />
       <Variable x:TypeArguments="sd2:DataSet" Name="var_DataSetExtracao" />
-      <Variable x:TypeArguments="x:String" Name="str_CaminhoExtracaoPasta">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">C:\Users\User\Desktop\PC\RPA Cours\M Cruz Uipath RPA Revisao Udemy\ProcessamentoDocumentosFramework-Taxonomia\Extracao</Literal>
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="C:\Users\User\Desktop\PC\RPA Cours\M Cruz Uipath RPA Revisao Udemy\ProcessamentoDocumentosFramework-Taxonomia\Extracao" Name="str_CaminhoExtracaoPasta" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
